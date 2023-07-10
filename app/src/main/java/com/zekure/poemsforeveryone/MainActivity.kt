@@ -20,14 +20,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PoemsForEveryoneTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val poemViewModel: PoemViewModel = viewModel(factory = PoemViewModel.Factory)
-                    when(val poemUiState: PoemUiState = poemViewModel.poemUiState) {
-                        is PoemUiState.Success -> Greeting(poemUiState.poem.author)
+                    val poemUiState: PoemUiState = poemViewModel.poemUiState
+                    when(poemUiState) {
+                        is PoemUiState.Success -> Greeting(poemUiState.poem.lines[0])
                         else -> Greeting("Android")
                     }
                 }

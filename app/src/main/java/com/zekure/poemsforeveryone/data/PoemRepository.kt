@@ -10,5 +10,5 @@ interface PoemRepository {
 class NetworkPoemRepository(
     private val poemApiService: PoemApiService
 ): PoemRepository {
-    override suspend fun getRandomPoem(): List<Poem> = poemApiService.getRandomPoem()
+    override suspend fun getRandomPoem(): List<Poem> = poemApiService.getRandomPoem("shakespeare")
 }

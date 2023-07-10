@@ -1,8 +1,9 @@
 package com.zekure.poemsforeveryone.network
 
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface PoemApiService {
-    @GET("random/1")
-    suspend fun getRandomPoem(): List<Poem>
+    @GET("author/{author}")
+    suspend fun getRandomPoem(@Path("author") author: String): List<Poem>
 }
